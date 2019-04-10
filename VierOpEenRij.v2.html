@@ -50,14 +50,14 @@
         }
 
         function wisselSpeler(){
-                document.getElementById("clicks").innerHTML = telKlik();
-                if(clicks % 2 == 0) {
-                    return "yellow";
-                }   
-                else{
-                    return "red";
-                }
-                }
+            document.getElementById("clicks").innerHTML = telKlik();
+            if(clicks % 2 == 0) {
+                return "yellow";
+            }   
+            else{
+                return "red";
+            }
+        }
 
   </script>
 </head>
@@ -119,7 +119,6 @@
             <td><div class="circle" onclick = steenaanklikken(70) id=vakje70></div></td>
         </tr>
     </table>
-    <button type="button" onClick="wisselSpeler()">Click me</button>
     <div id="hallo"><p>Clicks: <a id="clicks">0</a></p></div>
     <details>
         <summary>Copyright 2019.</summary>
