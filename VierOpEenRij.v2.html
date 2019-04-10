@@ -58,7 +58,9 @@
                 return "red";
             }
         }
-
+        function opnieuw(){
+            window.location.reload();
+        }
   </script>
 </head>
 <body>
@@ -119,6 +121,8 @@
             <td><div class="circle" onclick = steenaanklikken(70) id=vakje70></div></td>
         </tr>
     </table>
+    <br />
+    <button id="knopOpnieuw" onclick="opnieuw()">Nieuw spel</button>
     <div id="hallo"><p>Clicks: <a id="clicks">0</a></p></div>
     <details>
         <summary>Copyright 2019.</summary>
