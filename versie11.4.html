@@ -1,0 +1,239 @@
+<html>
+<head>
+  <style>
+      body{
+          text-align: center;
+      }
+      .vieropeenrij{
+          display: inline-block;
+          border-collapse: collapse;
+          background-color: blue;
+      }
+      .vieropeenrij td{
+          border: 5px solid blue;
+            width: 70px;
+            height: 70px;
+      }
+      .circle{
+          background: white;
+          border-radius: 100%;
+          height: 70px;
+          width: 70px;
+          position: relative;
+      }
+      .plaatje{
+          width: 70px;
+          height: 70px;
+          border-radius: 100%;
+      }
+      #zwartecirkel{
+          background-color: black;
+      }
+      #rodecirkel{
+          background-color: red;
+      }
+      #groenecirkel{
+          background-color: green;
+      }
+      #rozecirkel{
+          background-color: pink;
+      }
+      #paarsecirkel{
+          background-color: purple;
+      }
+      #gelecirkel{
+          background-color: yellow;
+      }
+      #oranjecirkel{
+          background-color: orange;
+      }
+  </style>
+  <script>
+      window.onload = function(){
+        document.getElementById("uitkomstSpeler1").innerHTML = localStorage.getItem("SpelerNaam") + " (Rood)";
+        document.getElementById("uitkomstSpeler2").innerHTML = localStorage.getItem("SpelerNaam2") + " (Geel)";
+      }
+
+        var speler1kleur = kleurKiezen();
+        var speler2kleur = kleurKiezen();
+
+        function kleurKiezen(kleurtje){
+            alert(kleurtje);
+            return kleurtje;
+        }
+
+      function steenaanklikken(vakId){
+          var rij = "" + vakId;
+          rij = rij.charAt(0);
+          var Iddoel = "vakje" + rij + checkOpWelkeHoogte(rij);
+          var teVerkleurenCirkel = document.getElementById(Iddoel);
+          teVerkleurenCirkel.style.backgroundColor = wisselSpeler();
+          var aanDeBeurt = spelerAanZet();
+      }
+      var hoogte = [0,0,0,0,0,0,0];
+      function checkOpWelkeHoogte(tiental){
+          var kleur = document.getElementById("vakje" + tiental + hoogte[tiental-1]).style.backgroundColor;
+          if(kleur == 'red' || kleur == 'yellow'){
+              hoogte[tiental-1]++;
+          }
+          return hoogte[tiental-1];
+      }
+      var clicks = 0;
+        function telKlik(){
+            clicks ++;
+            return clicks;
+        }
+        function wisselSpeler(){
+            document.getElementById("aantalKlikken").innerHTML = telKlik();
+            if(clicks % 2 == 0) {
+                return "yellow";
+            }   
+            else{
+                return "red";
+            }
+        }
+        function spelerAanZet(){
+            document.getElementById("commentaar").style.backgroundColor = 'red';
+            document.getElementById("commentaar").innerHTML = localStorage.getItem("SpelerNaam");
+            if(clicks % 2 == 0){
+                document.getElementById("commentaar").style.backgroundColor = "yellow";
+                document.getElementById("commentaar").innerHTML = localStorage.getItem("SpelerNaam2");
+            }
+        }
+        function RestartGame(){   //voorbeeld van refresh website
+				window.location = window.location;
+            }
+            function naamOpslaanSpeler1(jojo){
+                    var invoerSpeler1 = document.getElementById("input").value;
+                    document.getElementById("uitkomstSpeler1").innerHTML = invoerSpeler1 + " (Rood)";
+                    localStorage.setItem("SpelerNaam", invoerSpeler1);
+                    //alert("Naam opgeslagen");
+            }
+            function naamOpslaanSpeler2(blabla){
+                    var invoerSpeler2 = document.getElementById("input").value;
+                    document.getElementById("uitkomstSpeler2").innerHTML = invoerSpeler2 + " (Geel)";
+                    localStorage.setItem("SpelerNaam2", invoerSpeler2);
+                    //alert("Naam opgeslagen");
+            }
+            function winnaarSpelerEen(){
+            document.getElementById("deWinnaar").innerHTML = "Gefeliciteerd " + localStorage.getItem("SpelerNaam") + "!";
+        }
+        function winnaarSpelerTwee(){
+            document.getElementById("deWinnaar").innerHTML = "Gefeliciteerd " + localStorage.getItem("SpelerNaam2") + "!";
+        }
+
+        
+  </script>
+</head>
+<body>
+<h1>Vier op een rij</h1>
+<div id="hallo"><p>Clicks: <a id="aantalKlikken">0</a></p></div>
+<div id="commentaar">Beurt</div>
+<br>
+    <table class="vieropeenrij">
+        <tr>
+            <td><div class="circle" onclick = steenaanklikken(15) id=vakje15></div></td>
+            <td><div class="circle" onclick = steenaanklikken(25) id=vakje25></div></td>
+            <td><div class="circle" onclick = steenaanklikken(35) id=vakje35></div></td>
+            <td><div class="circle" onclick = steenaanklikken(45) id=vakje45></div></td>
+            <td><div class="circle" onclick = steenaanklikken(55) id=vakje55></div></td>
+            <td><div class="circle" onclick = steenaanklikken(65) id=vakje65></div></td>
+            <td><div class="circle" onclick = steenaanklikken(75) id=vakje75></div></td>
+        </tr>
+        <tr>
+            <td><div class="circle" onclick = steenaanklikken(14) id=vakje14></div></td>
+            <td><div class="circle" onclick = steenaanklikken(24) id=vakje24></div></td>
+            <td><div class="circle" onclick = steenaanklikken(34) id=vakje34></div></td>
+            <td><div class="circle" onclick = steenaanklikken(44) id=vakje44></div></td>
+            <td><div class="circle" onclick = steenaanklikken(54) id=vakje54></div></td>
+            <td><div class="circle" onclick = steenaanklikken(64) id=vakje64></div></td>
+            <td><div class="circle" onclick = steenaanklikken(74) id=vakje74></div></td>
+        </tr>
+        <tr>
+            <td><div class="circle" onclick = steenaanklikken(13) id=vakje13></div></td>
+            <td><div class="circle" onclick = steenaanklikken(23) id=vakje23></div></td>
+            <td><div class="circle" onclick = steenaanklikken(33) id=vakje33></div></td>
+            <td><div class="circle" onclick = steenaanklikken(43) id=vakje43></div></td>
+            <td><div class="circle" onclick = steenaanklikken(53) id=vakje53></div></td>
+            <td><div class="circle" onclick = steenaanklikken(63) id=vakje63></div></td>
+            <td><div class="circle" onclick = steenaanklikken(73) id=vakje73></div></td>
+        </tr>
+        <tr>
+            <td><div class="circle" onclick = steenaanklikken(12) id=vakje12></div></td>
+            <td><div class="circle" onclick = steenaanklikken(22) id=vakje22></div></td>
+            <td><div class="circle" onclick = steenaanklikken(32) id=vakje32></div></td>
+            <td><div class="circle" onclick = steenaanklikken(42) id=vakje42></div></td>
+            <td><div class="circle" onclick = steenaanklikken(52) id=vakje52></div></td>
+            <td><div class="circle" onclick = steenaanklikken(62) id=vakje62></div></td>
+            <td><div class="circle" onclick = steenaanklikken(72) id=vakje72></div></td>
+        </tr>
+        <tr>
+            <td><div class="circle" onclick = steenaanklikken(11) id=vakje11></div></td>
+            <td><div class="circle" onclick = steenaanklikken(21) id=vakje21></div></td>
+            <td><div class="circle" onclick = steenaanklikken(31) id=vakje31></div></td>
+            <td><div class="circle" onclick = steenaanklikken(41) id=vakje41></div></td>
+            <td><div class="circle" onclick = steenaanklikken(51) id=vakje51></div></td>
+            <td><div class="circle" onclick = steenaanklikken(61) id=vakje61></div></td>
+            <td><div class="circle" onclick = steenaanklikken(71) id=vakje71></div></td>
+        </tr>
+        <tr>
+            <td><div class="circle" onclick = steenaanklikken(10) id=vakje10></div></td>
+            <td><div class="circle" onclick = steenaanklikken(20) id=vakje20></div></td>
+            <td><div class="circle" onclick = steenaanklikken(30) id=vakje30></div></td>
+            <td><div class="circle" onclick = steenaanklikken(40) id=vakje40></div></td>
+            <td><div class="circle" onclick = steenaanklikken(50) id=vakje50></div></td>
+            <td><div class="circle" onclick = steenaanklikken(60) id=vakje60></div></td>
+            <td><div class="circle" onclick = steenaanklikken(70) id=vakje70></div></td>
+        </tr>
+    </table>
+    <br>
+    <h3 id="deWinnaar">Wie heeft er gewonnen?</h3>
+    <button type="button" onclick="winnaarSpelerEen()">Speler1</button>
+    <button type="button" onclick="winnaarSpelerTwee()">Speler2</button>
+    <br>
+    <br>
+    <button type="reset" onclick="RestartGame()">Herstart het spel</button> <!--restart knop-->
+    <br>
+    <br>
+    <div id=uitkomstSpeler1> Speler 1</div> 
+    <div id=uitkomstSpeler2> Speler 2 </div> <br>
+    <textarea id= "input" type="text"> </textarea> <br>
+    
+        <button onclick=naamOpslaanSpeler1(speler1)> Sla speler 1 op </button>
+        <button onclick=naamOpslaanSpeler2(speler2)> Sla speler 2 op </button> <br>
+    <p><details>
+        <summary>Copyright 2019.</summary>
+        <p>This game is created by YoungCapital NEXT. All Rights Reserved.</p>
+    </details></p>
+    <p>Kies je kleur:</p>
+    <input type="radio" name="colors" id="red">Speler 1
+    <input type="radio" name="colors" id="red">Speler 2
+    <button onclick="kleurKiezen()">OK</button>
+    <br>
+    <table class="vieropeenrij">
+            <tr>
+                <td><div class="circle" id="zwartecirkel" onclick = "kleurKiezen('black')"></div></td>
+                <td><div class="circle" id="groenecirkel" onclick = "kleurKiezen('green')"></div></td>
+                <td><div class="circle" id="rodecirkel" onclick = "kleurKiezen('red')"></div></td>
+                <td><div class="circle" id="gelecirkel" onclick = "kleurKiezen('yellow')"></div></td>
+                <td><div class="circle" id="oranjecirkel" onclick = "kleurKiezen('orange')"></div></td>
+                <td><div class="circle" id="rozecirkel" onclick = "kleurKiezen('pink')"></div></td>
+                <td><div class="circle" id="paarsecirkel" onclick = "kleurKiezen('purple')"></div></td>
+            </tr>
+        </table>
+        <br />
+ 
+
+
+        <p>Style je steen!</p>
+    <div id="plaatjesbank">
+        <img class="plaatje" id="plaatje1" src="thumbnails\giraf.jpg" alt="giraf">
+        <img class="plaatje" id="plaatje2" src="thumbnails\bij.jpg" alt="bij">
+        <img class="plaatje" id="plaatje3" src="thumbnails\aap.jpg" alt="aap">
+        <img class="plaatje" id="plaatje4" src="thumbnails\bloem.jpg" alt="bloem">
+        <img class="plaatje" id="plaatje5" src="thumbnails\gras.jpg" alt="gras">
+        <img class="plaatje" id="plaatje6" src="thumbnails\insect.jpg" alt="insect">
+        <img class="plaatje" id="plaatje7" src="thumbnails\steen.jpg" alt="steen">
+    </div>
+</body>
+</html>
