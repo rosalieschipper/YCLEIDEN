@@ -54,13 +54,17 @@
         document.getElementById("uitkomstSpeler2").innerHTML = localStorage.getItem("SpelerNaam2") + " (Geel)";
       }
 
-        var speler1kleur = kleurKiezen();
-        var speler2kleur = kleurKiezen();
+        var speler1kleur;
+        var speler2kleur;
+
 
         function kleurKiezen(kleurtje){
             alert(kleurtje);
-            return kleurtje;
+            speler1kleur = kleurtje;
+            //return kleurtje;
         }
+        
+
 
       function steenaanklikken(vakId){
           var rij = "" + vakId;
@@ -206,8 +210,8 @@
         <p>This game is created by YoungCapital NEXT. All Rights Reserved.</p>
     </details></p>
     <p>Kies je kleur:</p>
-    <input type="radio" name="colors" id="red">Speler 1
-    <input type="radio" name="colors" id="red">Speler 2
+    <input type="radio" name="colors" id="speler1kleurtje">Speler 1
+    <input type="radio" name="colors" id="speler2kleurtje">Speler 2
     <button onclick="kleurKiezen()">OK</button>
     <br>
     <table class="vieropeenrij">
